@@ -1,0 +1,41 @@
+/* .custom-dropdown {
+    padding: 5px; 
+  }
+
+  .dropdown-menu {
+    margin-top: 5px; 
+  }
+  
+
+  .dropdown-item {
+    padding: 8px 12px; 
+  } */
+
+  .underline-on-hover {
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .underline-on-hover::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px; /* Adjust this value for the underline height */
+    background: #000; /* Change the color to your desired underline color */
+    bottom: 0px;
+    left: 0;
+    right: 50%;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  .underline-on-hover:hover::before {
+    transform: scaleX(1);
+  }
+  
+#navbarDropdown{
+  padding-bottom: 5px;
+}  
+  

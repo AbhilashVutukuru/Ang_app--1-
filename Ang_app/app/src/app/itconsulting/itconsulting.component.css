@@ -1,0 +1,9 @@
+.hover-element {
+    color: initial; /* Set the default text color */
+    transition: color 0.3s; /* Add a smooth color transition effect */
+  
+    /* Define the hover effect */
+    &:hover {
+      color: rgb(63, 172, 206); /* Change the text color to red on hover */
+    }
+  }

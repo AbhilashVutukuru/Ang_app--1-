@@ -1,0 +1,97 @@
+
+
+<!-- <div class="formbold-main-wrapper">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<img src="">
+  <div class="formbold-form-wrapper" style="padding-top: 20px;" *ngIf="!showFieldErrors">
+    <form [formGroup]="form" (ngSubmit)="send()">
+      <div class="formbold-mb-5" style="padding-bottom: 10px;">
+        <label for="name" class="formbold-form-label">Name</label>
+        <input formControlName="from_name" type="text" id="name" required style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+        <div class="text-danger" *ngIf="form.get('from_name')?.touched && form.get('from_name')?.hasError('required')">
+          Name is required.
+        </div>
+      </div>
+      <div class="formbold-mb-5" style="padding-bottom: 10px;">
+        <label for="email" class="formbold-form-label">Email</label>
+        <input formControlName="from_email" type="text" id="email" required style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+        <div class="text-danger" *ngIf="form.get('from_email')?.touched && form.get('from_email')?.hasError('required')">
+          Email is required.
+        </div>
+      </div>
+      <div class="formbold-mb-5" style="padding-bottom: 10px;">
+        <label for="message" class="formbold-form-label">Message</label>
+        <textarea maxlength="10" formControlName="message" id="message" required
+        style="border: 1px solid #ccc; padding: 5px; width: 100%; height: 100px;"></textarea>
+
+        <div class="text-danger" *ngIf="form.get('message')?.touched && form.get('message')?.hasError('maxlength')">
+          Maximum length <strong>exceed</strong>
+        </div>
+
+        <div class="text-danger" *ngIf="form.get('message')?.touched && form.get('message')?.hasError('required')">
+          Message is required.
+        </div>
+        <div *ngIf="successMessage" class="text-success" style="padding-top: 10px;">
+          {{ successMessage }}
+          <i class="fas fa-check-circle"></i>
+        </div>
+      </div>
+      <div>
+      <button type="submit" class="btn" style="background-color: #007bff; color: #fff; padding: 10px; border: none;" (click)="submit()">
+        Submit
+      </button>
+    </div>
+    </form>
+  </div>
+</div> -->
+
+
+<div class="formbold-main-wrapper">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <img src="">
+  <div class="formbold-form-wrapper" style="padding-top: 20px;" *ngIf="!showFieldErrors">
+    <form [formGroup]="form" (ngSubmit)="send()">
+      <div class="formbold-mb-5" style="padding-bottom: 10px;">
+        <label for="name" class="formbold-form-label">Name</label>
+        <input formControlName="from_name" type="text" id="name" required style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+        <div class="text-danger" *ngIf="form.get('from_name')?.touched && form.get('from_name')?.hasError('required')">
+          Name is required.
+        </div>
+      </div>
+      <div class="formbold-mb-5" style="padding-bottom: 10px;">
+        <label for="email"  class="formbold-form-label">Email</label>
+        <input formControlName="from_email" type="text" id="email" required style="border: 1px solid #ccc; padding: 5px; width: 100%;" />
+        <div class="text-danger" *ngIf="form.get('from_email')?.touched && form.get('from_email')?.hasError('required')">
+          Email is required.
+        </div>
+      </div>
+      <div class="formbold-mb-5" style="padding-bottom: 10px;">
+        <label for="message" class="formbold-form-label">Message</label>
+        <textarea maxlength="100" formControlName="message" (input)="checkCharacterLimit()" id="message" required style="border: 1px solid #ccc; padding: 5px; width: 100%; height: 100px;"></textarea>
+
+        <!-- <span class="text-danger" *ngIf="form.get('message')?.hasError('maxlength')">
+          Maximum length exceeded
+        </span> -->
+        <span class="text-danger" *ngIf="isCharacterLimitExceeded">Maximum length exceeded</span>
+
+        <div class="text-danger" *ngIf="form.get('message')?.touched && form.get('message')?.hasError('required')">
+          Message is required.
+        </div>
+        <div *ngIf="successMessage" class="text-success" style="padding-top: 10px;">
+          {{ successMessage }}
+          <i class="fas fa-check-circle"></i>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn" style="background-color: #007bff; color: #fff; padding: 10px; border: none;" (click)="submit()" [disabled]="!form.valid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

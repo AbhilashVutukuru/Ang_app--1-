@@ -1,0 +1,49 @@
+/* delete-confirmation.component.css */
+
+.confirmation-modal {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    justify-content: center;
+    position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  }
+  
+  .confirmation-modal p {
+    margin: 0 0 10px;
+  }
+  
+  .confirmation-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    /* justify-content: center; */
+    margin-top: 20px;
+    
+  }
+  
+  .confirmation-buttons button {
+    padding: 10px 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  .confirmation-buttons button:first-child {
+    background-color: #de2a23; /* Bootstrap's danger color */
+    color: #fff;
+    padding-right: 15px;
+  }
+  
+  .confirmation-buttons button:last-child {
+    background-color: rgb(78, 189, 76); /* Bootstrap's info color */
+    color: #fff;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  

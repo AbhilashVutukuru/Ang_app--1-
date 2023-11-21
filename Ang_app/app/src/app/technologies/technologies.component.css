@@ -1,0 +1,260 @@
+.technology-card {
+    margin-bottom: 20px; 
+  }
+  .list-group {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list-group-item {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+ /* src/app/about-us/about-us.component.css */
+.container-with-background {
+   
+    background-image: url('https://tse2.mm.bing.net/th?id=OIP.Xit9rQJLdUwX-q2-Ll5RfQHaEK&pid=Api&P=0&h=220');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; /* Set text color to contrast with the background */
+    padding: 20px; /* Add padding for content */
+  }
+  .background-image{
+    background-image: url('https://tse1.mm.bing.net/th?id=OIP.YUnZzokSv17Jq55l8RPwigHaEK&pid=Api&P=0&h=220');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; /* Set text color to contrast with the background */
+    padding: 20px;
+  }
+  
+----------------------------------
+
+ /* Add your CSS styles here */
+/* form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.form-group {
+    margin-bottom: 15px;
+  }
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+select {
+  width: 30%;
+  padding: 5px;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  display: block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+} */
+
+table {
+  width: 250%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.btn{
+  float: right;
+}
+
+.update{
+  width: auto;
+  background-color: rgb(87, 219, 87);
+  padding-right: 1px;
+}
+.delete{
+  background-color: rgb(221, 51, 51);
+}
+
+/* api-call */
+
+.container {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+/* Styling for buttons */
+button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: rgb(56, 155, 56);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Styling for the form inputs */
+input {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Styling for the table */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Styling for the "Edit" and "Delete" buttons in the table */
+button.edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Styling for the form sections */
+div.form-section {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+#rating {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 200px;
+}
+#name {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 200px;
+}
+
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+  /* display: none; */
+}
+.update-message{
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.getData{
+background-color: rgb(49, 164, 209);
+color: white;
+}
+.btn{
+background-color: rgb(42, 153, 30);
+}
+
+.rating {
+font-size: 24px;
+}
+
+
+
+/* Default styles for stars */
+.fas {
+font-size: 25px; /* Set the font size for stars */
+margin-right: 5px; /* Add spacing between stars */
+
+}
+
+/* Styles for filled stars */
+.fa-star {
+color:black; /* Set the color for filled stars */
+
+}
+
+/* Styles for partially filled stars */
+.fa-star-half-o {
+color: black; /* Set the color for partially filled stars */
+position: relative;
+display: inline-block;
+
+}
+
+.fa-star-half-o:after {
+content: '\f006'; /* Unicode character for a half-filled star */
+position: absolute;
+left: 0;
+overflow: hidden;
+width: 50%; /* Adjust the width for the half-filled part */
+
+}
+
+/* Styles for stars */
+.star {
+font-size: 24px; /* Adjust the font-size of the star */
+width: 24px; /* Adjust the width of the star */
+height: 24px; /* Adjust the height of the star */
+display: inline-block;
+margin-right: 5px; /* Add spacing between stars */
+transform: rotate(-4deg);
+}
+
+/* Styles for filled stars */
+.filled::before {
+content: '\2605'; /* Unicode character for a filled star */
+color: black; /* Set the color for filled stars */
+}
+
+/* Styles for partially filled stars */
+.partial-filled::before {
+content: '\2605'; /* Unicode character for a filled star */
+color: black; /* Set the color for filled stars */
+mask: linear-gradient(to right, black 0%, black 50%, transparent 50%, transparent 100%);
+/* mask: linear-gradient(to right, gold 0%, gold calc(100% - var(--percentage)), transparent var(--percentage), transparent 100%); */
+}
+/* Styles for empty stars */
+.empty::before {
+content: '\2606'; /* Unicode character for an empty star */
+color: #ddd; /* Set the color for empty stars */
+}
+
+

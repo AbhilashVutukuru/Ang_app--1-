@@ -1,0 +1,364 @@
+<!-- <div class="container container-with-background" content="width=device-width">
+    <h3 style="color: rgb(23, 23, 24);text-decoration: underline;">Technologies</h3><br>
+    <div class="row" style="width: 700px;">
+      <div class="col-md-4" *ngFor="let technology of technologies">
+        <div class="card technology-card">
+          <img src="{{ technology.imageUrl }}" class="card-img-top" alt="{{ technology.name }}" style="width: 100%;height: 100px;">
+          <div class="card-body">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br> -->
+
+<!-- <div>
+  <h2>Employee Details</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" formControlName="dob" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" formControlName="gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <label for="technologies">Technologies:</label>
+        <input type="text" id="technologies" formControlName="technologies" required>
+        <div *ngIf="employeeForm.get('technologies')?.hasError('required')">
+          Technology is required.
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div *ngIf="submitted">
+      <h2>Employee Details Entered</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Technologies</th>
+        </tr>
+        <tr>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.dob }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.technologies.join(', ') }}</td>
+        </tr>
+      </table>
+    </div> -->
+<!-- ----------------------------------------------------------------------------- -->
+
+<!-- <div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">Employee Details</h2>
+          <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" formControlName="name" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="dob" class="d-block">Date of Birth:</label>
+              <div class="d-inline-block">
+                <input type="date" id="dob" formControlName="dob" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" formControlName="email" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Gender:</label>
+              <div class="form-check">
+                <input type="radio" id="male" formControlName="gender" [value]="'Male'" class="form-check-input">
+                <label for="male" class="form-check-label">Male</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" id="female" formControlName="gender" [value]="'Female'" class="form-check-input">
+                <label for="female" class="form-check-label">Female</label>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Technologies:</label>
+              <div class="form-check">
+                <input type="checkbox" id="html" formControlName="html"  class="form-check-input">
+                <label for="html" class="form-check-label">html</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="css" formControlName="css"  class="form-check-input">
+                <label for="css" class="form-check-label">css</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="BigData" formControlName="BigData"  class="form-check-input">
+                <label for="BigData" class="form-check-label">BigData</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="Java" formControlName="Java"  class="form-check-input">
+                <label for="Java" class="form-check-label">Java</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+       
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="card" *ngIf="submitted">
+          <div class="card-body">
+            <h2 class="card-title text-center py-4">Employee Details Entered</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date of Birth</th>
+                  <th>Email</th>
+                  <th>Gender</th>
+                  <th>Technologies</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of employees">
+                  <td>{{ data.name }}</td>
+                  <td>{{ data.dob }}</td>
+                  <td>{{ data.email }}</td>
+                  <td>
+                    <ng-container *ngIf="data.gender === 'Male'">Male</ng-container>
+                    <ng-container *ngIf="data.gender === 'Female'">Female</ng-container>
+                  </td>
+                  <td>
+                    <ng-container *ngIf="data.html">html</ng-container>
+                    <ng-container *ngIf="data.css">,css</ng-container>
+                    <ng-container *ngIf="data.BigData">,BigData</ng-container>
+                    <ng-container *ngIf="data.Java">,Java</ng-container>
+                  </td>
+                  <td>
+                    <button class="update" type="button" (click)="editEmployee(data)">Update</button>
+                    <button class="delete" type="button" (click)="deleteEmployee(data)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- ------------------------------------------------------------------ -->
+  <!-- <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+          <div class="card" *ngIf="submitted">
+            <div class="card-body">
+              <h2 class="card-title text-center py-4">Employee Details Entered</h2>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Technologies</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of employees">
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.dob }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.gender }}</td>
+                    <td>{{ data.technologies }}</td>
+                    <td><button class="update" type="submit" (click)="editEmployee(data)">Update</button>
+                    <button class="delete" type="submit" (click)="deleteEmployee(data)">delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+<!-- ---------------------------------------------------------------------------- -->
+
+    <div class="container">
+      <button class="getData" (click)="fetchData()">Get Data</button>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <!-- Add a new food -->
+      <div class="container">
+        <form [formGroup]="addFoodForm" (ngSubmit)="addFood()">
+          <div class="form-group">
+           <b> <label for="name" style="font-family: 'YourFontFamily', sans-serif;">Name:</label></b>
+            <input type="text" id="name" formControlName="name" class="form-control" required>
+          </div>
+          <!-- <div class="form-group">
+            <label for="type">Type:</label>
+            <input type="text" id="type" formControlName="type" class="form-control" required>
+          </div> -->
+    
+          <div class="form-group">
+           <b> <label for="type" style="font-family: 'YourFontFamily', sans-serif;">Type:</label></b>
+            <div class="form-check">
+              <input type="radio" id="main" formControlName="type" class="form-check-input" value="Main"
+                (change)="updateSelectedType('Main')">
+              <label>Main</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="starter" formControlName="type" class="form-check-input" value="Starter"
+                (change)="updateSelectedType('Starter')">
+              <label>Starter</label>
+            </div>
+          </div>
+
+         
+    
+          <div class="form-group">
+            <b><label for="calories">Calories:</label></b>
+            <!-- <input type="number" id="calories" formControlName="calories" class="form-control" required>  -->
+    
+            <label>
+              <input type="checkbox" formControlName="checkbox1" (change)="updateSelectedValue()">  900
+            </label>
+            <label>
+              <input type="checkbox" formControlName="checkbox2" (change)="updateSelectedValue()"> 1000
+            </label>
+            <label>
+              <input type="checkbox" formControlName="checkbox3" (change)="updateSelectedValue()"> 1100
+            </label>
+          </div>
+    
+          <!-- <div class="form-group">
+            <label for="rating">Rating:</label>
+            <app-rating [maxRating]="5" (ratingChanged)="onRatingChanged($event)"></app-rating>
+          </div> -->
+          <div class="form-group">
+            <b><label for="rating">Rating:</label></b>
+            <input type="text" id="rating" formControlName="rating" class="form-control" placeholder="0 To 5" required>
+          </div>
+          
+          
+    <br>
+          <button type="submit" class="addFood">Add Food</button>
+          <div *ngIf="showSuccessMessage" class="success-message">Food added successfully!</div>
+          <div *ngIf="UpdateMessage" class="update-message">Food updated successfully!</div>
+          <div *ngIf="deleteMessage" class="update-message">Food deleted successfully!</div>
+        </form>
+        
+        <div>
+          <app-delete
+          *ngIf="selectedFoodDetails"
+          [foodDetails]="selectedFoodDetails"
+          (deleteConfirmed)="onDeleteConfirmed($event)"
+        ></app-delete>
+      </div>
+
+      </div>
+      <!-- <p>{{selectedFoodDetails}}</p> -->
+    
+      <!-- Update an existing food -->
+      <div *ngIf="foodToUpdate">
+        <input [(ngModel)]="foodToUpdate.name" placeholder="Name" />
+        <input [(ngModel)]="foodToUpdate.type" placeholder="Type" />
+        <input [(ngModel)]="foodToUpdate.calories" type="number" placeholder="Calories" />
+        <input [(ngModel)]="foodToUpdate.rating" type="number"/> 
+        <button (click)="updateFood()">Update Food</button>
+       
+      </div>
+    
+      <table *ngIf="foods?.length > 0">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Name</th>
+            <th>Type</th>
+            <th>Calories</th>
+            <th>Actions</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let food of foods">
+            <!-- <td>{{ food.id }}</td> -->
+            <td>{{ food.name }}</td>
+            <td>{{ food.type }}</td>
+            <td>{{ food.calories }}
+            </td>
+            <td>
+              <button class="edit" (click)="foodToUpdate = food">Edit</button>
+              <button class="delete" (click)="onDeleteConfirmed(food.id)" (click)="openDeleteDialog(food.id)">Delete</button>
+            </td>
+            <td>
+            <!-- {{food.rating}} -->
+            <!-- <span *ngFor="let star of getStarArray(food.rating); let i=index">
+              <i class="fas" [ngClass]="{'fa-star': star === 'filled', 'fa-star-o': star === 'empty', 'black-star': star === 'filled', 'white-star': star === 'empty'}"></i>
+            </span> -->
+    
+            <!-- <span *ngFor="let star of getStarArray(food.rating); let i=index" [title]="getTooltipText(star)" (mouseover)="updateEnteredRating()">
+              <i class="star" [ngClass]="{
+                'filled': star === 'filled',
+                'partial-filled': star.startsWith('partial-'),
+                'empty': star === 'empty'
+              }"></i>
+            </span> -->
+    
+            <span *ngFor="let star of getStarArray(food.rating); let i=index" [title]="getTooltipText(star, food.rating)" (mouseover)="updateEnteredRating()">
+              <i class="star" [ngClass]="{
+                'filled': star === 'filled',
+                'partial-filled': star.startsWith('partial-'),
+                'empty': star === 'empty'
+              }"></i>
+            </span>
+            
+          </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-delete
+      [selectedFoodDetails]="selectedFoodDetails"
+      (deleteConfirmed)="onDeleteConfirmed($event)">                       
+    </app-delete>
+     -->
+    <!-- <app-delete
+      *ngIf="isDeleteDialogVisible"
+      [foodName]="selectedFoodDetails?.name"
+      (deleteConfirmed)="deleteFood(selectedFoodDetails?.id)"
+      (deleteCanceled)="cancelDelete()">
+    </app-delete> -->
+    
+
+    </div>

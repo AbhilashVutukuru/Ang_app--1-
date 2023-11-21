@@ -1,0 +1,24 @@
+.contact-info {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.contact-info p {
+    margin: 0;
+}
+
+.label {
+    font-weight: bold;
+}
+.custom-div {
+    width: 90%;
+    height: 400px;
+    padding-left: 50px;
+    right: 100px;
+    top: 119px;
+    position: absolute;
+    color: rgb(116, 112, 112);
+    background-color: rgb(238, 236, 236);
+    display: flex;
+    flex-direction: column;
+}
