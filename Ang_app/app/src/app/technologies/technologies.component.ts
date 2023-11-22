@@ -203,6 +203,12 @@ openDeleteDialog(id: number) {
   this.isDeleteDialogVisible = true;
 }
 
+openModel(){
+  const modelDiv = document.getElementById('myModel')
+  if(modelDiv != null){
+    modelDiv.style.display = 'block';
+  }
+}
 
 addFood() {
   // localStorage.clear();
@@ -343,12 +349,9 @@ onDeleteConfirmed(isConfirmed: boolean): void {
       }, 5000);
     });
   }
-
   // Clear selectedFoodDetails after deletion or cancellation
   this.selectedFoodDetails = null;
 }
-
-
 
 cancelDelete() {
   this.isDeleteDialogVisible = false;

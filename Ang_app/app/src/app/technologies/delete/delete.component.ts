@@ -1,4 +1,5 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
+// import { MDBModalRef } from 'ng-uikit-pro-standard';
 
 @Component({
   selector: 'app-delete',
@@ -47,6 +48,20 @@ export class DeleteComponent {
   cancelDelete() {
     // Emit an event to inform the parent component (AppComponent) that deletion is canceled
     this.deleteConfirmed.emit(false);
+  }
+
+  openModel(){
+    const modalDiv = document.getElementById('myModel')
+    if(modalDiv != null){
+      modalDiv.style.display= 'none';
+    }
+  }
+
+  closeModel(){
+    const modalDiv = document.getElementById('myModel')
+    if(modalDiv != null){
+      modalDiv.style.display= 'none';
+    }
   }
 
 }
