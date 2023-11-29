@@ -46,4 +46,6 @@
     padding-right: 15px;
     padding-left: 15px;
   }
-  
+  .modal-dialog{
+    padding-top: 150px;
+  }

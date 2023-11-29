@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-technologies',
@@ -154,7 +155,7 @@ addFoodForm: FormGroup;
 selectedValue: string = '';
 
 
-constructor(private http: HttpClient, private formBuilder: FormBuilder) {
+constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService:ModalService) {
   this.addFoodForm = this.formBuilder.group({
     name: ['', Validators.required],
     type: ['', Validators.required],
@@ -198,18 +199,33 @@ isDeleteDialogVisible: boolean = false;
 
 selectedFoodDetails!: any;
 
+
 openDeleteDialog(id: number) {
   this.selectedFoodDetails = this.foods.find(food => food.id === id);
   this.isDeleteDialogVisible = true;
+  this.modalService.openModal();
 }
 
-openModel(){
-  const modelDiv = document.getElementById('myModel')
-  if(modelDiv != null){
-    modelDiv.style.display = 'block';
+// openModel(){
+//   const modelDiv = document.getElementById('myModel')
+//   if(modelDiv){
+//     modelDiv.style.display = 'block';
+//   }
+// }
+
+openEdit(){
+const modelEdit = document.getElementById('myModel')
+if(modelEdit != null){
+  modelEdit.style.display = 'block';
+}
+}
+
+closeEdit(){
+  const modalEdit = document.getElementById('myModel')
+  if(modalEdit != null){
+    modalEdit.style.display = 'none'
   }
 }
-
 addFood() {
   // localStorage.clear();
   // return;

@@ -299,13 +299,26 @@
       <!-- <p>{{selectedFoodDetails}}</p> -->
     
       <!-- Update an existing food -->
-      <div *ngIf="foodToUpdate">
-        <input [(ngModel)]="foodToUpdate.name" placeholder="Name" />
-        <input [(ngModel)]="foodToUpdate.type" placeholder="Type" />
-        <input [(ngModel)]="foodToUpdate.calories" type="number" placeholder="Calories" />
+      <div class="modal" id="myModel">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+      <div *ngIf="foodToUpdate" class="modal-body">
+        <h6 style="color: chocolate;"><b>Edit details</b></h6>
+        <b><label>Name:</label></b>
+        <input [(ngModel)]="foodToUpdate.name" placeholder="Name" /><br>
+        <b><label>Type:</label></b>
+        <input [(ngModel)]="foodToUpdate.type" placeholder="Type" /><br>
+        <b><label>Calories:</label></b>
+        <input [(ngModel)]="foodToUpdate.calories" type="number" placeholder="Calories" /><br>
+        <b><label>Rating:</label></b>
         <input [(ngModel)]="foodToUpdate.rating" type="number"/> 
-        <button (click)="updateFood()">Update Food</button>
-       
+      <div class="modal-footer">
+        <button (click)="updateFood()" data-bs-dismiss="modal" (click)="closeEdit()" >Update Food</button>
+      </div>
+      </div>
+      </div>
+      </div>
       </div>
     
       <table *ngIf="foods?.length > 0">
@@ -322,13 +335,13 @@
         <tbody>
           <tr *ngFor="let food of foods">
             <!-- <td>{{ food.id }}</td> -->
-            <td>{{ food.name }}</td>
+            <td>{{ food.name }}</td> 
             <td>{{ food.type }}</td>
             <td>{{ food.calories }}
             </td>
             <td>
-              <button class="edit" (click)="foodToUpdate = food">Edit</button>
-              <button class="delete" (click)="onDeleteConfirmed(food.id)" (click)="openDeleteDialog(food.id)" data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModel()">Delete</button>
+              <button class="edit" (click)="foodToUpdate = food" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-target="#myModel" (click)="openEdit()">Edit</button>
+              <button class="delete" (click)="onDeleteConfirmed(food.id)" (click)="openDeleteDialog(food.id)" data-bs-toggle="modal" data-bs-target="#myModal" >Delete</button>
             </td>
             <td>
             <!-- {{food.rating}} -->

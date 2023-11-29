@@ -13,7 +13,6 @@ import { HoverComponent } from './hover/hover.component';
 import { HomeComponent } from './home/home.component';
 
 
-
 import { SolutionsComponent } from './solutions/solutions.component';
 import { ServiceComponent } from './service/service.component';
 import { ItconsultingComponent } from './itconsulting/itconsulting.component';

@@ -1,5 +1,6 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 // import { MDBModalRef } from 'ng-uikit-pro-standard';
+import { ModalService } from 'src/app/modal.service';
 
 @Component({
   selector: 'app-delete',
@@ -40,6 +41,11 @@ export class DeleteComponent {
   @Input() foodDetails: any;
   @Output() deleteConfirmed = new EventEmitter<boolean>();
 
+  constructor(private modalService: ModalService) {}
+  closeModel() {
+    this.modalService.closeModal();
+  }
+
   confirmDelete() {
     // Emit an event to inform the parent component (AppComponent) that deletion is confirmed
     this.deleteConfirmed.emit(true);
@@ -50,18 +56,18 @@ export class DeleteComponent {
     this.deleteConfirmed.emit(false);
   }
 
-  openModel(){
-    const modalDiv = document.getElementById('myModel')
-    if(modalDiv != null){
-      modalDiv.style.display= 'none';
-    }
-  }
+  // openModel(){
+  //   const modalDiv = document.getElementById('myModel')
+  //   if(modalDiv != null){
+  //     modalDiv.style.display= 'none';
+  //   }
+  // }
 
-  closeModel(){
-    const modalDiv = document.getElementById('myModel')
-    if(modalDiv != null){
-      modalDiv.style.display= 'none';
-    }
-  }
+  // closeModel(){
+  //   const modalDiv = document.getElementById('myModel')
+  //   if(modalDiv){
+  //     modalDiv.style.display= 'none';
+  //   }
+  // }
 
 }
