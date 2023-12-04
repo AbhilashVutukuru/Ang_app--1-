@@ -4,6 +4,8 @@ import { RouterModule,Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +24,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DeleteComponent } from './technologies/delete/delete.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoute:Routes=[
   {path:'',redirectTo:'Home',pathMatch:'full'},
@@ -48,7 +51,7 @@ const appRoute:Routes=[
     // AboutComponent,
     AboutusComponent,
     ContactComponent,
-    DeleteComponent
+    DeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ const appRoute:Routes=[
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoute)
+    MatDialogModule,
+    RouterModule.forRoot(appRoute),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

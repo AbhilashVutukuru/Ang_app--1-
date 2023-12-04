@@ -72,7 +72,7 @@
 <body>
 
 <div class="container mt-3">
-  <h5>Are you sure you want to delete</h5>
+  <h3>Are you sure you want to delete</h3>
   
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Confirm
@@ -104,54 +104,28 @@
   </div>
 </div>
 
-
 </body>
 </html>
 
-<!-- <div class="modal" id="myModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<!-- <div class="modal" #deleteModal="bs-modal" [config]="{backdrop: 'static', keyboard: false}" (onHidden)="closeModel()">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal Heading</h5>
-        <button type="button" class="btn-close" (click)="closeModel()" aria-label="Close"></button>
+        <h4 class="modal-title">Are you sure you want to delete?</h4>
+        <button type="button" class="close" (click)="cancelDelete()">&times;</button>
       </div>
       <div class="modal-body">
-       
-        Modal body..
         <p><b>Name:</b> {{ foodDetails?.name }}</p>
         <p><b>Type:</b> {{ foodDetails?.type }}</p>
         <p><b>Calories:</b> {{ foodDetails?.calories }}</p>
         <p><b>Rating: </b>{{ foodDetails?.rating }}</p>
       </div>
       <div class="modal-footer">
-  
-        <button type="button" class="btn btn-danger" (click)="confirmDelete()" data-bs-dismiss="modal" (click)="closeModel()">confirm</button>
-        <button type="button" class="btn btn-danger" (click)="cancelDelete()" (click)="closeModel()" data-bs-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()">Confirm</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
       </div>
     </div>
   </div>
 </div> -->
 
-<!-- Your existing content -->
-
-<!-- <div class="modal" id="deleteModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Are you sure you want to delete?</h4>
-        <button type="button" class="btn-close" (click)="onModalClose()"></button>
-      </div>
-      <div class="modal-body">
-        <p><b>Name:</b> {{ selectedFoodDetails?.name }}</p>
-        <p><b>Type:</b> {{ selectedFoodDetails?.type }}</p>
-        <p><b>Calories:</b> {{ selectedFoodDetails?.calories }}</p>
-        <p><b>Rating: </b>{{ selectedFoodDetails?.rating }}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="onDeleteConfirmed(true)">Confirm</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteConfirmed(false)">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 

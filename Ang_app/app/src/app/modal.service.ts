@@ -17,3 +17,4 @@ export class ModalService {
     this.modalVisibilitySubject.next(false);
   }
 }
+

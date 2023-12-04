@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ModalService } from '../modal.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { DeleteComponent } from './delete/delete.component';
+
 
 @Component({
   selector: 'app-technologies',
@@ -196,8 +199,21 @@ UpdateMessage = false;
 deleteMessage = false;
 enteredRating: number;
 isDeleteDialogVisible: boolean = false;
+deleteModalRef: BsModalRef;
 
 selectedFoodDetails!: any;
+
+// openDeleteDialog(id: number) {
+//   this.selectedFoodDetails = this.foods.find(food => food.id === id);
+//   const initialState = { foodDetails: this.selectedFoodDetails };
+//   this.deleteModalRef = this.modalService.show(DeleteComponent, { initialState });
+//   this.deleteModalRef.content.deleteConfirmed.subscribe((result: boolean) => {
+//     if (result) {
+//       // User confirmed deletion, perform deletion logic here
+//       this.onDeleteConfirmed(this.selectedFoodDetails.id);
+//     }
+//   });
+// }
 
 
 openDeleteDialog(id: number) {
@@ -358,6 +374,7 @@ onDeleteConfirmed(isConfirmed: boolean): void {
         localStorage.setItem('ratingData', JSON.stringify(newRating));
       }
       this.fetchData();
+      this.deleteModalRef.hide();
       console.log("deleted", idToDelete);
       this.deleteMessage = true;
       setTimeout(() => {
