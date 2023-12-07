@@ -57,7 +57,7 @@
   </div>
 </div> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -73,7 +73,6 @@
 
 <div class="container mt-3">
   <h3>Are you sure you want to delete</h3>
-  
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Confirm
   </button>
@@ -105,7 +104,7 @@
 </div>
 
 </body>
-</html>
+</html> -->
 
 <!-- <div class="modal" #deleteModal="bs-modal" [config]="{backdrop: 'static', keyboard: false}" (onHidden)="closeModel()">
   <div class="modal-dialog">
@@ -128,4 +127,19 @@
   </div>
 </div> -->
 
+<!-- delete-dialog.component.html -->
+<div mat-dialog-container class="dialog-container" >
+<h4 mat-dialog-title style="color: black;">Are you sure you want to delete?</h4>
+<div mat-dialog-content class="dialogContent">
+  <p><b>Name:</b> {{ data?.name }}</p>
+  <p><b>Type:</b> {{ data?.type }}</p>
+  <p><b>Calories:</b> {{ data?.calories }}</p>
+  <p><b>Rating:</b> {{ data?.rating }}</p>
+  <!-- Add other properties as needed -->
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button class="cancel-btn" [mat-dialog-close]="false">Cancel</button>
+  <button mat-button class="confirm-btn" [mat-dialog-close]="true">Confirm</button>
+</div>
+</div>
 

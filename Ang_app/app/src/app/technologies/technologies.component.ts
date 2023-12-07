@@ -3,7 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ModalService } from '../modal.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from './delete/delete.component';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+import { jsPDF } from 'jspdf';
+// import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 
 @Component({
@@ -158,7 +165,7 @@ addFoodForm: FormGroup;
 selectedValue: string = '';
 
 
-constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService:ModalService) {
+constructor(private http: HttpClient, private formBuilder: FormBuilder, private modalService:ModalService , public dialog:MatDialog) {
   this.addFoodForm = this.formBuilder.group({
     name: ['', Validators.required],
     type: ['', Validators.required],
@@ -197,6 +204,7 @@ fetchData() {
 showSuccessMessage = false;
 UpdateMessage = false;
 deleteMessage = false;
+CancelMessage = false;
 enteredRating: number;
 isDeleteDialogVisible: boolean = false;
 deleteModalRef: BsModalRef;
@@ -216,18 +224,60 @@ selectedFoodDetails!: any;
 // }
 
 
-openDeleteDialog(id: number) {
-  this.selectedFoodDetails = this.foods.find(food => food.id === id);
-  this.isDeleteDialogVisible = true;
-  this.modalService.openModal();
+// openDeleteDialog(id: number) {
+//   this.selectedFoodDetails = this.foods.find(food => food.id === id);
+//   this.isDeleteDialogVisible = true;
+//   this.modalService.openModal();
+// }
+
+openDeleteDialog(id:number): void {
+  const dialogRef = this.dialog.open(DeleteComponent, {
+    width: '400px',
+    data: this.selectedFoodDetails = this.foods.find(food => food.id === id), // Pass data to the dialog
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // User confirmed deletion, perform deletion logic here
+      this.deleteFood(this.selectedFoodDetails.id);
+    }
+    // Handle cancellation if needed
+    else{
+      this.CancelMessage=true;
+      setTimeout(() => {
+        this.CancelMessage = false;
+      }, 5000);
+    }
+  });
 }
 
-// openModel(){
-//   const modelDiv = document.getElementById('myModel')
-//   if(modelDiv){
-//     modelDiv.style.display = 'block';
-//   }
-// }
+deleteFood(id: number): void {
+  if (id) {
+    const url = `https://localhost:7124/api/v1/foods/${id}`;
+
+    this.http.delete(url).subscribe(
+      (response) => {
+        if (response === null) {
+          const ratingData = JSON.parse(localStorage.getItem('ratingData')) || [];
+          const newRating = ratingData.filter((e) => e.id !== id);
+          localStorage.setItem('ratingData', JSON.stringify(newRating));
+        }
+        this.fetchData();
+        this.deleteMessage = true;
+        this.selectedFoodDetails = true;
+        setTimeout(() => {
+          this.deleteMessage = false;
+        }, 5000);
+      },
+      (error) => {
+        console.error('Error deleting food:', error);
+        this.deleteMessage = false; // Set this to false to avoid showing the success message on error
+      }
+    );
+  }
+}
+
+
 
 openEdit(){
 const modelEdit = document.getElementById('myModel')
@@ -327,6 +377,30 @@ updateFood() {
   }, 5000);
 }
 
+exportToExcel(): void {
+  const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.foods);
+  const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+  const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  const data: Blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+  saveAs(data, 'foodData.xlsx');
+}
+
+exportToPDF(): void {
+  const doc = new jsPDF();
+  const foodData = this.foods.map(food => [food.name, food.type, food.calories, food.rating]);
+
+  // Use autoTable method to generate a table in the PDF
+  autoTable(doc, {
+    head: [['Name', 'Type', 'Calories', 'Rating']],
+    body: foodData
+  });
+
+  // Save the PDF with a specific name
+  doc.save('foodData.pdf');
+}
+
+
+
 
 // deleteFood(id: number): void {
 //   if (id) {console.log(id, 'display')
@@ -374,7 +448,7 @@ onDeleteConfirmed(isConfirmed: boolean): void {
         localStorage.setItem('ratingData', JSON.stringify(newRating));
       }
       this.fetchData();
-      this.deleteModalRef.hide();
+      // this.deleteModalRef.hide();
       console.log("deleted", idToDelete);
       this.deleteMessage = true;
       setTimeout(() => {

@@ -50,3 +50,50 @@
     padding-top: 150px;
   }
   
+  /* technologies.component.css */
+
+/* Add your own styles or modify as needed */
+.mat-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialogContent {
+  padding: 20px;
+  color: black;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.confirm-btn {
+  margin-left: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  
+}
+.dialog-container {
+  background-color: white; /* Set your desired background color */
+  width: 400px; /* Set your desired width */
+}
+.custom-dialog-container {
+  background-color: #f0f0f0; /* Set your desired background color */
+  color: white; /* Set your desired text color */
+}

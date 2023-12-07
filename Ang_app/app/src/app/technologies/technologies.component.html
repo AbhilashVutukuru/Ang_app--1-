@@ -285,15 +285,17 @@
           <div *ngIf="showSuccessMessage" class="success-message">Food added successfully!</div>
           <div *ngIf="UpdateMessage" class="update-message">Food updated successfully!</div>
           <div *ngIf="deleteMessage" class="update-message">Food deleted successfully!</div>
+          <div *ngIf="CancelMessage" class="update-message">Deletion cancelled by User</div>
+
         </form>
         
-        <div>
+        <!-- <div>
           <app-delete
           *ngIf="selectedFoodDetails"
           [foodDetails]="selectedFoodDetails"
           (deleteConfirmed)="onDeleteConfirmed($event)"
         ></app-delete>
-      </div>
+      </div> -->
 
       </div>
       <!-- <p>{{selectedFoodDetails}}</p> -->
@@ -352,7 +354,7 @@
             <!-- <span *ngFor="let star of getStarArray(food.rating); let i=index" [title]="getTooltipText(star)" (mouseover)="updateEnteredRating()">
               <i class="star" [ngClass]="{
                 'filled': star === 'filled',
-                'partial-filled': star.startsWith('partial-'),
+                'partial-filled': star.startsWith('partial-++++++++++++'),
                 'empty': star === 'empty'
               }"></i>
             </span> -->
@@ -370,4 +372,13 @@
         </tbody>
       </table>
 
+      <div class="container mt-3">
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Confirm</button> -->
+        <button class="btn btn-success" (click)="exportToExcel()">Export to Excel</button>
+        <button class="btn btn-danger" (click)="exportToPDF()">Export to PDF</button>
+      </div>
+      
+
     </div>
+    
+   

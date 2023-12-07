@@ -1,7 +1,10 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, Inject } from '@angular/core';
 // import { MDBModalRef } from 'ng-uikit-pro-standard';
 import { ModalService } from 'src/app/modal.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 
 
@@ -73,23 +76,34 @@ export class DeleteComponent {
   //   }
   // }
 
-  @Input() foodDetails: any;
-  @Output() deleteConfirmed = new EventEmitter<boolean>();
+  constructor(
+    public dialogRef: MatDialogRef<DeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
-  constructor(public bsModalRef: BsModalRef) {}
-
-  confirmDelete() {
-    this.deleteConfirmed.emit(true);
-    this.bsModalRef.hide();
+  confirmDelete(): void {
+    this.dialogRef.close(true);
   }
 
-  cancelDelete() {
-    this.deleteConfirmed.emit(false);
-    this.bsModalRef.hide();
-  }
-
-  closeModel() {
-    this.bsModalRef.hide();
+  cancelDelete(): void {
+    this.dialogRef.close(true);
   }
 
 }
+
+// const inputVariable = "123457788";
+
+// // Split the string into two parts
+// const halfLength = Math.floor(inputVariable.length / 2);
+// const firstPart = inputVariable.slice(0, halfLength);
+// const secondPart = inputVariable.slice(halfLength);
+
+// // Reverse each part and store in an array
+// const reversedParts = [
+//   firstPart.split('').reverse().join(''),
+//   secondPart.split('').reverse().join('')
+// ];
+
+// // Display the result
+// console.log("Original Input:", inputVariable);
+// console.log("Reversed Parts:", reversedParts);
