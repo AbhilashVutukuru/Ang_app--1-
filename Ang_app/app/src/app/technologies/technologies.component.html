@@ -288,6 +288,21 @@
           <div *ngIf="CancelMessage" class="update-message">Deletion cancelled by User</div>
 
         </form>
+
+        <div>
+          <!-- <h2>Dropdowns</h2>                                           -->
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" style="  background-color: #0056b3;" data-bs-toggle="dropdown">
+              Click Here To Download
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" style="width: auto;">
+              <li><a class="dropdown-item"> <button class="btn btn-danger" style="background-color: white; color: black; width: 100%;" onmouseover="this.style.backgroundColor='#007bff'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" (click)="exportToPDF()">Export to PDF</button>
+              </a></li>
+              <li><a class="dropdown-item">       <button class="btn btn-success" style="background-color: white; color: black; width: 100%;" onmouseover="this.style.backgroundColor='#007bff'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" (click)="exportToExcel()">Export to Excel</button>
+              </a></li>
+            </ul>
+          </div>
+        </div>
         
         <!-- <div>
           <app-delete
@@ -372,11 +387,11 @@
         </tbody>
       </table>
 
-      <div class="container mt-3">
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Confirm</button> -->
+      <!-- <div class="container mt-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Confirm</button>
         <button class="btn btn-success" (click)="exportToExcel()">Export to Excel</button>
         <button class="btn btn-danger" (click)="exportToPDF()">Export to PDF</button>
-      </div>
+      </div> -->
       
 
     </div>
